@@ -1,5 +1,5 @@
 export const environment = {
-  url: "http://localhost:3005/api/",
+  url: "http://18.230.153.132:3000/api/",
   production: false,
   user_service: {
     users: {
@@ -19,7 +19,7 @@ export const environment = {
     api_resource: 'audits'
   },
   auth: {
-    uri: "http://localhost:3005/api/",
+    uri: "http://18.230.153.132:3000/api/",
     login: {
       api_resource: 'login'
     },

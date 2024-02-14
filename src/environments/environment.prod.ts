@@ -1,14 +1,25 @@
 export const environment = {
-  url: "http://localhost:3005/api/",
+  url: "http://18.230.153.132:3000/api/",
   production: true,
   user_service: {
-    account: {
-      api_resource: 'accounts',
-      api_list: 'account-list'
+    users: {
+      api_resource: 'users',
     }
   },
+  product_service: {
+    api_resource: 'products'
+  },
+  provider_service: {
+    api_resource: 'providers'
+  },
+  sale_service: {
+    api_resource: 'sales'
+  },
+  audit_service: {
+    api_resource: 'audits'
+  },
   auth: {
-    uri: "http://localhost:3005/api/",
+    uri: "http://18.230.153.132:3000/api/",
     login: {
       api_resource: 'login'
     },
