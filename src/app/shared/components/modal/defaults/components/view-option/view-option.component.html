@@ -1,0 +1,8 @@
+<div [ngClass]="selected ? 'option-list option-active':'option-list'" (click)="selectOption()" *ngIf="data">
+  <div class="option-logo">
+    <span><i [class]="'fa fa-solid fa-'+generateIcon()"></i></span>
+  </div>
+  <div class="option-info" *ngIf="configView">
+    <p>{{data[configView.keyFirstShow]}}</p> <p *ngIf="configView.keySecondShow"> - {{data[configView.keySecondShow]}}</p>
+  </div>
+</div>

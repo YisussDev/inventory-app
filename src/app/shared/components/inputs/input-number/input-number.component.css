@@ -1,0 +1,14 @@
+
+.helper-amount {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: var(--color-text-btw);
+  pointer-events: none;
+  user-select: none;
+  font-weight: bolder;
+}
+
+.form-control:read-only {
+  background: transparent !important;
+}

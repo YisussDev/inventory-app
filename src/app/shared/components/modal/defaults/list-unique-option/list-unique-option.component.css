@@ -1,0 +1,5 @@
+.content-modal{
+  display: grid;
+  row-gap: 10px;
+  padding: 10px;
+}

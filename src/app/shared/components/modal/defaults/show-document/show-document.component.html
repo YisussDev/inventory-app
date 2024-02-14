@@ -1,0 +1,91 @@
+<div class="content-modal" style="max-width: 1000px; width: 80vw; height: calc(100vh - 200px); overflow: hidden">
+  <div style="position: relative;">
+    <div class="container-nav-files" style="left: 20px; width: calc((100% - 40px))">
+      <button class="button-nav-left" (click)="beforeDocument()" [disabled]="fileSelected == 0">
+      <span>
+        <i class="fa fa-solid fa-arrow-left"></i>
+      </span>
+      </button>
+      <div>
+        <p class="name-document">{{data[fileSelected].filename}}</p>
+        <p style="text-align: center">{{fileSelected + 1}} / {{data.length}}</p>
+      </div>
+      <button class="button-nav-right" (click)="afterDocument()" [disabled]="fileSelected == (data.length - 1)">
+      <span>
+        <i class="fa fa-solid fa-arrow-right"></i>
+      </span>
+      </button>
+    </div>
+  </div>
+  <div class="document-view-container">
+    <ng-container *ngIf="data[fileSelected].ext != 'pdf'">
+      <div id="container-files">
+        <img [src]="'data:image/'+data[fileSelected].reference+';base64,' + data[fileSelected].reference"
+             alt="document">
+      </div>
+    </ng-container>
+    <ng-container *ngIf="data[fileSelected].ext == 'pdf'">
+      <div id="container-files"
+           style="box-shadow: var(--shadow-box-uniform); border: 1px solid var(--color-border-input)">
+        <pdf-viewer
+          [page]="data[fileSelected].page_actual"
+          [render-text-mode]="0"
+          [src]="data[fileSelected].src"
+          [rotation]="0"
+          [original-size]="false"
+          [show-all]="false"
+          [fit-to-page]="true"
+          [zoom]="2"
+          [zoom-scale]="'page-width'"
+          [stick-to-page]="false"
+          [render-text]="true"
+          [external-link-target]="'blank'"
+          [autoresize]="true"
+          [show-borders]="false"
+          (after-load-complete)="afterLoadPdf($event)"
+        >
+        </pdf-viewer>
+      </div>
+    </ng-container>
+  </div>
+  <div style="position: relative; margin-top: -80px; margin-bottom: 110px" *ngIf="scale">
+    <div class="container-nav-files" style="left: calc((100% - 180px)/2); width: 180px">
+      <button class="button-nav-left" (click)="zoomMinus()">
+      <span>
+        <i class="fa fa-solid fa-minus"></i>
+      </span>
+      </button>
+      <div style="display: flex; justify-content: center; align-items: center">
+        <p>{{dictionarieZoom[this.scale]}}</p>
+      </div>
+      <button class="button-nav-right" (click)="zoomPlus()">
+      <span>
+        <i class="fa fa-solid fa-plus"></i>
+      </span>
+      </button>
+    </div>
+    <div class="container-nav-files" style="left: 20px; width: calc(100% - 40px); margin-top: 50px; margin-bottom: 20px"
+         *ngIf="data[fileSelected].ext == 'pdf'">
+      <button class="button-nav-left" (click)="prevPage()">
+      <span>
+        <i class="fa fa-solid fa-arrow-left"></i>
+      </span>
+      </button>
+      <div style="display: flex; justify-content: center; align-items: center">
+        <p>{{data[fileSelected].page_actual}} / {{data[fileSelected].total_pages}}</p>
+      </div>
+      <button class="button-nav-right" (click)="nextPage()">
+      <span>
+        <i class="fa fa-solid fa-arrow-right"></i>
+      </span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="control-modal">
+  <app-button-primary
+    label="Cerrar"
+    (clickEvent)="closeModal()"
+  >
+  </app-button-primary>
+</div>

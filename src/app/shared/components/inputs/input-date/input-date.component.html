@@ -1,0 +1,22 @@
+<div>
+  <div [class]="icon ? 'form-group group-with-icon':'form-group'" [style]="hasError() ? ('border-color: red'):('')">
+    <ng-container *ngIf="icon">
+      <div class="icon-input">
+        <span><i [class]="'fa fa-solid fa-'+icon"></i></span>
+      </div>
+    </ng-container>
+    <input class="form-control"
+           type="date"
+           [name]="name"
+           [placeholder]="placeholder"
+           [ngModel]="value"
+           (ngModelChange)="changeValue($event)"
+           (blur)="touchedControl()">
+    <label [class]="icon? 'label-with-icon':''">{{ label }}</label>
+  </div>
+  <div class="error-control">
+    <ng-container *ngIf="hasError()">
+      {{getErrorMessage()}}
+    </ng-container>
+  </div>
+</div>

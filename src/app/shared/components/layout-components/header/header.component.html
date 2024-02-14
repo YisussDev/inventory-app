@@ -1,0 +1,27 @@
+<nav class="navbar-container">
+  <div class="nav-links">
+    <div class="container-btn">
+      <button (click)="goToApps()">
+        <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="7" height="7" fill="white"/>
+          <rect x="10" width="7" height="7" fill="white"/>
+          <rect y="11" width="7" height="7" fill="white"/>
+          <rect x="10" y="11" width="7" height="7" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div class="container-breadcrumb">
+      <h3>{{ title }}</h3>
+      <p>{{ breadcrumbTransformed }}</p>
+    </div>
+  </div>
+  <div class="session-info">
+    <div class="img-user-container" (click)="openInfoSession()">
+      <img [src]="dataUser.img_url" alt="img-user">
+    </div>
+    <div class="info-user-container">
+      <p>{{dataUser.name}}</p>
+      <p>{{dataUser.email}}</p>
+    </div>
+  </div>
+</nav>

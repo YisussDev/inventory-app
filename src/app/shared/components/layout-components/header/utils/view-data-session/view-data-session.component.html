@@ -1,0 +1,21 @@
+<div class="content-modal mb-3">
+  <div class="card-session-container">
+    <div class="img-card-session">
+      <span><i class="fa fa-solid fa-user"></i></span>
+    </div>
+    <div class="info-card-session mt-2">
+      <p><b>{{data.name}}</b></p>
+    </div>
+    <div style="display:flex; column-gap: 10px; width: 100%; justify-content: center" class="mt-2">
+      <app-input-toggle [onlyToggle]="true" [icon]="!themeActive ? 'sun':'moon'" [value]="(themeActive ? 1 : 0)" ($customLogicInput)="changeTheme($event)"></app-input-toggle>
+      <p>{{themeActive ? 'Modo Oscuro' : 'Modo Ligth'}}</p>
+    </div>
+  </div>
+</div>
+<div class="control-modal">
+  <app-button-primary
+    label="Cerrar Sesión"
+    (clickEvent)="closeSession()"
+  >
+  </app-button-primary>
+</div>

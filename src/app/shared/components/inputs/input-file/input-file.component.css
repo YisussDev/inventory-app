@@ -1,0 +1,79 @@
+.input-area {
+  position: relative;
+  display: block;
+  overflow: inherit;
+  width: 100%;
+  height: 45px;
+  min-height: 45px;
+  max-height: 45px;
+  margin: 0;
+  border-radius: 5px;
+  background: var(--color-bg);
+  border: 3px dashed var(--color-border-input);
+  padding: 0 15px;
+}
+
+.input-area-active {
+  border-color: rgba(0, 255, 0, 0.33);
+}
+
+.input-area:hover, .input-area-active:hover {
+  cursor: pointer;
+  background: var(--color-border-input);
+  color: var(--color-text-btw);
+  transition: .3s ease-out;
+}
+
+.input-area > div {
+  margin: 0 auto;
+  left: 0;
+  top: 0;
+  padding: 0 10px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-area > div:hover {
+  cursor: pointer;
+}
+
+.input-area > div > p {
+  position: absolute;
+  left: 20px;
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.input-area > div > div > p {
+  text-align: center;
+}
+
+.input-area > div > div > p:last-child {
+  font-size: 0.7rem;
+}
+
+.input-area > div > div > p:first-child {
+  font-size: 0.8rem;
+  /*line-height: 1rem;*/
+  font-weight: bold;
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden; /* Oculta el contenido que no cabe en el contenedor */
+  text-overflow: ellipsis; /* Agrega los tres puntos al final */
+}
+
+.input-file {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*background: transparent;*/
+  color: transparent;
+  opacity: 0;
+  z-index: 999;
+  cursor: pointer;
+}

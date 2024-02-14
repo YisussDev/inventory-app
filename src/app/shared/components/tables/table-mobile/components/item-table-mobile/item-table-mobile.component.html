@@ -1,0 +1,122 @@
+<div class="table-body-item">
+  <div class="header-item" (click)="changeCollapsed($event)">
+    <div>
+      <span [style]="collapsed ? ('transform: rotate(180deg)'):('transform: rotate(0deg)')"><i
+        [class]="'fa fa-solid fa-chevron-up'"></i></span>
+    </div>
+    <div class="header-info-item">
+      <ng-container *ngFor="let config of configPrinciplesRow.configs">
+        <div *ngIf="config['key']">
+          <ng-container *ngIf="(config['pipe']=='normal')||!config['pipe']">
+            <p>{{config['label']}}</p>
+            <p>{{getDataColumn(config.key, dataRow)}}</p>
+          </ng-container>
+          <ng-container *ngIf="(config['pipe']=='cash')">
+            <p>{{config['label']}}</p>
+            <p>{{dataRow[config['key']] | currency}}</p>
+          </ng-container>
+          <ng-container *ngIf="(config['pipe']=='icon')">
+            <ng-container *ngFor="let configStatus of config.configStatus">
+              <button *ngIf="dataRow[config['key']]==configStatus['id']" class="status-badge"
+                      [style]="'background-color:' + configStatus['color']"
+                      (click)="configStatus['eventDrive'] && eventRow(dataRow, configStatus['nameEvent'])"
+              ><span> <i
+                [class]="'fa fa-solid fa-'+configStatus['icon']"></i></span>
+              </button>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="(config['pipe']=='status')">
+            <ng-container *ngFor="let configStatus of config.configStatus">
+              <p *ngIf="dataRow[config['key']]==configStatus['id']" class="status-badge"
+                 [style]="'background-color:' + configStatus['color']"><span> <i
+                [class]="'fa fa-solid fa-'+configStatus['icon']"></i></span>
+              </p>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="(config['pipe']=='modal') && config['configStatus']">
+            <button class="status-badge"
+                    (click)="eventRow(dataRow, config['configStatus'][0]['id'])"
+                    [style]="config['configStatus']? ('background-color:' + config['configStatus'][0]['color']):('background-color: gray')">
+              <span> <i [class]="'fa fa-solid fa-'+ config['configStatus'][0].icon"></i></span>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="(config['pipe']=='custom')">
+            <p>{{config['label']}}</p>
+            <ng-container *ngIf="config['configCustom']">
+              <p>{{config['configCustom'](getDataColumn(config.key, dataRow))}}</p>
+            </ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="configPrinciplesRow['activeEvent']">
+        <button (click)="eventRow(dataRow, configPrinciplesRow['nameEvent'])">
+          <span><i [class]="'fa fa-solid fa-'+configPrinciplesRow['iconEvent']"></i></span>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+  <div [class]="collapsed ? ('body-collapsed'):('body-item')">
+    <ul class="properties-body-item">
+      <ng-container *ngFor="let field of configTable">
+        <li *ngIf="tableConfigColumns(field.column_name)">
+          <ng-container>
+            <ng-container [ngSwitch]="field.column_pipe">
+              <ng-container *ngSwitchCase="'normal'">
+                <p>{{field.column_translate}}:</p>
+                <p
+                  [title]="getDataColumn(field.column_name, dataRow)">{{ getDataColumn(field.column_name, dataRow) }}</p>
+              </ng-container>
+              <ng-container *ngSwitchCase="'cash'">
+                <p>{{field.column_translate}}:</p>
+                <p
+                  [title]="getDataColumn(field.column_name, dataRow)">{{ getDataColumn(field.column_name, dataRow) | currency }}</p>
+              </ng-container>
+              <ng-container *ngSwitchCase="'status'">
+                <p>{{field.column_translate}}:</p>
+                <ng-container *ngFor="let option of field.config_pipe">
+                  <ng-container *ngIf="getDataColumn(field.column_name, dataRow) == option.id">
+                    <div class="badge-status" [style]="'background-color:' + option.color">
+                      {{ option.label }}
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'icon'">
+                <p>{{field.column_translate}}:</p>
+                <ng-container *ngFor="let option of field.config_pipe">
+                  <td *ngIf="getDataColumn(field.column_name, dataRow) == option.id">
+                    <div class="link_button" [style]="'background-color:' + option.color" [title]="option.label">
+                      <span><i [class]="'fa fa-solid fa-'+option.icon"></i></span>
+                    </div>
+                  </td>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'custom'">
+                <p>{{field.column_translate}}</p>
+                <ng-container *ngIf="field.config_custom">
+                  <p>{{field.config_custom(getDataColumn(field.column_name, dataRow))}}</p>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </li>
+      </ng-container>
+    </ul>
+    <div class="controls-body-item" *ngIf="validActions">
+      <div class="btn-group">
+        <button data-toggle="dropdown"
+                class="btn btn-primary btn-sm dropdown-toggle"><i class="fa-solid fa-bars"></i></button>
+        <ul class="dropdown-menu">
+          <ng-container *ngFor="let actionEventItem of tableFieldActions">
+            <li *ngIf="actionEventItem.condition ? actionEventItem.condition(dataRow) : true">
+              <a class="dropdown-item"
+                 (click)="eventRow(dataRow, actionEventItem.nameEvent)">
+                {{ actionEventItem.label }}
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

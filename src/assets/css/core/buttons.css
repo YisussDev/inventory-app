@@ -1,0 +1,81 @@
+.button-general {
+  padding: 0.55rem 1.5rem;
+  font-size: 0.7rem;
+  border: none;
+  color: #FFF;
+  border-radius: 5px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.button-general-disabled {
+  padding: 0.55rem 1.5rem;
+  font-size: 0.7rem;
+  background: #d7d7d7 !important;
+  border: none;
+  color: #FFF;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: inherit;
+}
+
+.button-general > span > i, .button-general-disabled > span > i {
+  margin: 0;
+}
+
+.button-general:hover {
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: .3s transform ease-in-out;
+}
+
+.button-general:active {
+  transform: translateY(1px);
+  transition: .3s transform ease-in-out;
+}
+
+.button-general-disabled:hover {
+  cursor: inherit;
+}
+
+/*button squart*/
+
+.button-squart {
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+  background: var(--color-bg-second);
+  border: 1px solid var(--color-border-input);
+  color: var(--color-border-input);
+  box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.10);
+  display: grid;
+  grid-template-rows: 1fr 20px;
+  align-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: .3s ease-out;
+}
+
+.button-squart span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.button-squart p {
+  font-weight: normal;
+  text-align: center;
+}
+
+.button-squart:hover {
+  cursor: pointer;
+  background: var(--color-primary);
+  color: #FFF;
+  transition: .3s ease-out;
+}

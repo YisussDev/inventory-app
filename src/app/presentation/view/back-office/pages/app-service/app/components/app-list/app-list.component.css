@@ -1,0 +1,166 @@
+.home-container {
+  min-height: 100vh;
+  max-width: 100%;
+  background-attachment: fixed;
+  background: var(--color-bg) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='3000' height='1500' preserveAspectRatio='none' viewBox='0 0 3000 1500'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3cpath d='M3000 0L2989.35 0L3000 736.84z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M2989.35 0L3000 736.84L3000 766.39L2730.54 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M2730.54 0L3000 766.39L3000 1032.1L1166.07 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M1166.07 0L3000 1032.1L3000 1080.25L662.52 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 1500L1070.19 1500L0 784.52z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 784.52L1070.19 1500L1210.16 1500L0 606.13z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 606.13L1210.16 1500L1753.46 1500L0 414.85z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 414.8499999999999L1753.46 1500L2417.78 1500L0 406.44999999999993z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='3000' height='1500' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  display: flex;
+  flex-direction: column;
+}
+
+.session-info {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100vw;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.10);
+
+  .button-logout {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-btw);
+    border-radius: 10px;
+    position: absolute;
+    font-size: 1.2rem;
+    border: none;
+    right: 10px;
+    background: transparent;
+  }
+
+  .card-session {
+    height: 40px;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    padding: 5px;
+    /*box-shadow: var(--shadow-box-general);*/
+  }
+
+  .card-session .info-logo {
+    width: 30px;
+    height: 30px;
+    background: var(--color-text-btw);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .card-session .info-logo img {
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .card-session .info-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-session .info-user > p:first-child {
+    font-size: 0.7rem;
+    font-weight: normal;
+    color: var(--color-text-btw);
+  }
+
+  .card-session .info-user > p:last-child {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--color-text-btw);
+  }
+}
+
+.modules-info {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 20px;
+  height: auto;
+  margin: auto;
+  width: 100%;
+  flex-wrap: wrap;
+  max-width: 500px;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: center;
+  }
+
+  > div .button-squart-app {
+    width: 100px;
+    height: 120px;
+  }
+
+  > div .button-squart-app > p {
+    font-weight: normal;
+    color: var(--color-text-btw);
+    text-align: center;
+    text-shadow: var(--shadow-box-general);
+  }
+
+  > div .button-squart-app > button {
+    box-shadow: var(--shadow-box-general);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    background-image: url("src/assets/img/background/button-apps/bg-card-app.svg");
+    background-position: left;
+    transition: .3s box-shadow ease-in-out, .3s transform ease-in-out;
+    animation: renderScale .4s ease-in-out;
+    padding: 20px;
+    font-size: 2.5rem;
+    color: #FFF;
+  }
+
+  > div .button-squart-app > button svg, .modules-info > div .button-squart-app > button img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  > div .button-squart-app > button:hover {
+    box-shadow: var(--shadow-box-general-hover);
+    transform: translateY(-2px);
+    transition: .3s box-shadow ease-in-out, .3s transform ease-in-out;
+  }
+
+}
+
+.bussiness-info {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.bussiness-info img, .bussiness-info svg {
+  max-width: 200px;
+  width: 200px;
+  height: auto;
+  max-height: 70px;
+  object-fit: contain;
+}

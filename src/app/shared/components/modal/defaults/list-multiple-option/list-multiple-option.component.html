@@ -1,0 +1,13 @@
+<div class="content-modal" style="row-gap: 10px">
+  <ng-container *ngFor="let option of data">
+    <app-view-option [data]="option" (clickEvent)="select(option)" [selected]="setActive(option)" [configView]="configLabels"></app-view-option>
+<!--    <app-button-full [label]="option[configLabels['keyToShow']]" (clickEvent)="select(option)"></app-button-full>-->
+  </ng-container>
+</div>
+<div class="control-modal">
+  <app-button-secondary
+    label="Cerrar"
+    (clickEvent)="closeModal()"
+  >
+  </app-button-secondary>
+</div>

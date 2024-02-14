@@ -1,0 +1,48 @@
+<div [class]="isResponsive ? ('table-mobile-container is-responsive'):('table-mobile-container')">
+  <div *ngIf="searchActions" class="options-table">
+    <div class="input-table-options" [formGroup]="formSearchQueries">
+      <div class="input-addon">
+        <span><i class="fa-solid fa-search"></i></span>
+      </div>
+      <input formControlName="search" type="text" placeholder="Búsqueda..." class="table-option-control">
+    </div>
+    <div class="btn-group btn-option">
+      <button
+        style="color: #FFF" data-toggle="dropdown" class="btn btn-default btn-option dropdown-toggle">Columnas
+      </button>
+      <ul class="dropdown-menu">
+        <div *ngFor="let column of tableConfig; let i = index" (dragover)="targetZone($event)" [id]="i"
+             (drop)="dropZone($event)">
+          <li style="display: flex" draggable="true" (dragstart)="dragInitial($event)" [attr.position]="i">
+            <a class="dropdown-item item-list" (click)="changeColumnVisible(column)" [attr.position]="i">
+              <input type="checkbox" [checked]="column.isActive">{{ column.column_translate }}
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="table-mobile">
+    <div class="header-table-mobile" *ngIf="showHeaderTable">
+      <h4>{{configTable[0].column_translate}}</h4>
+    </div>
+    <div class="body-table-mobile">
+      <ng-container *ngFor="let row of defaultTableData">
+        <app-item-table-mobile
+          [tableFieldActions]="tableFieldActions"
+          [configTable]="configTable"
+          [dataRow]="row"
+          [configPrinciplesRow]="configPrinciplesRow"
+          [validActions]="validActions"
+          (eventClick)="eventRow($event)"
+        ></app-item-table-mobile>
+      </ng-container>
+    </div>
+  </div>
+  <div class="mt-3" style="display: flex; justify-content: center">
+    <app-pagination
+      [pagination]="pagination"
+    ></app-pagination>
+  </div>
+</div>
+

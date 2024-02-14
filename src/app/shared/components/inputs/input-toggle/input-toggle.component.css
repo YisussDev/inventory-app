@@ -1,0 +1,42 @@
+.toggle-control {
+  width: 40px;
+  max-width: 40px;
+  position: relative;
+  height: 20px;
+  max-height: 20px;
+  background: var(--color-bg-second);
+  border-radius: 40px;
+}
+
+.activated {
+  transition-delay: .3s;
+  transition: .3s all ease-out;
+  background: #008200;
+}
+
+.toggle-circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--color-bg-second);
+  border-radius: 30px;
+  border: 2px solid var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+  transition: .3s all ease-in-out;
+  box-shadow: var(--shadow-box-general);
+}
+
+.toggle-circle:hover {
+  cursor: pointer;
+}
+
+.toggle-circle > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,39 @@
+<ng-container>
+  <div [ngClass]="icon ? 'form-group group-with-icon':'form-group'" [style]="hasError() ? ('border-color: red'):('')">
+    <ng-container *ngIf="isInputFocused">
+      <ul class="options-input" *ngIf="optionsData && optionsData.length > 0">
+        <ng-container *ngFor="let option of optionsData">
+
+          <li [class]="'option-'+id" (click)="selectOption(option);">
+            <input type="checkbox" [checked]="isChecked(option)">
+            <div>
+              <p>{{configAutocomplete['labelToShowFirstControl']}} {{configAutocomplete['pipeFirsControl'] ? (configAutocomplete['pipeFirsControl'](option[configAutocomplete['keyToShowFirstControl']])) : (option[configAutocomplete['keyToShowFirstControl']])}}</p>
+              <ng-container *ngIf="configAutocomplete['keyToShowSecondControl']">
+                <p> {{configAutocomplete['labelToShowSecondControl']}} {{configAutocomplete['pipeSecondControl'] ? (configAutocomplete['pipeSecondControl'](option[configAutocomplete['keyToShowSecondControl']])) : (option[configAutocomplete['keyToShowSecondControl']])}}</p>
+              </ng-container>
+              <ng-container *ngIf="configAutocomplete['keyToShowThirdControl']">
+                <p> {{configAutocomplete['labelToShowThirdControl']}} {{configAutocomplete['pipeThirdControl'] ? (configAutocomplete['pipeThirdControl'](option[configAutocomplete['keyToShowThirdControl']])) : (option[configAutocomplete['keyToShowThirdControl']])}}</p>
+              </ng-container>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </ng-container>
+    <div [class]="'label-multiple-option option-'+id" (click)="changeVisible()">
+      <p>
+        <span style="margin-right: 10px"><i class="fa fa-solid fa-list-ul"></i></span>
+        {{label}}
+      </p>
+      <span [style]="isInputFocused ? ('transform: rotate(180deg)'):('transform: rotate(0deg)')"><i
+        class="fa fa-solid fa-chevron-down"></i></span>
+    </div>
+    <div class="form-control">
+      <!--      <label [class]="icon? 'label-with-icon':''">{{ label }}</label>-->
+    </div>
+  </div>
+  <div class="error-control">
+    <ng-container *ngIf="hasError()">
+      {{getErrorMessage()}}
+    </ng-container>
+  </div>
+</ng-container>

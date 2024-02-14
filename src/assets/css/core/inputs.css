@@ -1,0 +1,179 @@
+.form-group {
+  position: relative;
+  display: block;
+  overflow: inherit;
+  width: 100%;
+  margin: 0;
+  border-radius: 5px;
+  /*background: transparent;*/
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-input);
+}
+
+.group-with-icon {
+  padding-left: 40px;
+}
+
+.label-with-icon {
+  margin-left: 25px;
+}
+
+.icon-input {
+  width: 40px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-btw);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  line-height: 1.2rem;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--color-text-btw);
+  /*border-radius: 20px;*/
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  background: transparent;
+  color: var(--color-text-btw);
+  border: none;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.form-control::placeholder {
+  color: transparent;
+}
+
+.form-group > .form-control {
+  height: calc(3.5rem + 2px);
+  line-height: 1.25;
+}
+
+.form-control:focus {
+  background: transparent;
+  outline: 0;
+}
+
+.form-group > .form-control, .form-group > .form-select {
+  height: calc(2.5rem + 2px);
+  line-height: 1;
+  padding: 0.55rem 0.15rem;
+}
+
+.form-group > label {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  height: 100%;
+  width: calc(100% - 15px);
+  padding: 0.55rem 0.15rem;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition: opacity .2s ease-in-out, transform .2s ease-in-out, font-size .2s ease-in-out;
+  display: inline-block;
+  font-size: 1rem;
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden; /* Oculta el contenido que no cabe en el contenedor */
+  text-overflow: ellipsis; /* Agrega los tres puntos al final */
+  /*transition: .3s width ease-out;*/
+  color: var(--color-text-btw);
+}
+
+.group-with-icon > label {
+  width: calc(100% - 40px);
+}
+
+.form-group > .form-control:focus, .form-group > .form-control:not(:placeholder-shown) {
+  padding-top: 1rem;
+  /*padding-bottom: 0.625rem;*/
+  transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden; /* Oculta el contenido que no cabe en el contenedor */
+  text-overflow: ellipsis; /* Agrega los tres puntos al final */
+}
+
+.form-group > .form-select:focus, .form-group > .form-select:not(:placeholder-shown) {
+  padding-top: 1rem;
+  transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden; /* Oculta el contenido que no cabe en el contenedor */
+  text-overflow: ellipsis; /* Agrega los tres puntos al final */
+}
+
+.form-group > .form-control:focus + label, .form-group > .form-control:not(:placeholder-shown) + label {
+  opacity: .75;
+  transform: scale(1) translateY(-0.5rem) translateX(0rem);
+  font-size: 0.6rem;
+  transition: opacity .2s ease-in-out, transform .2s ease-in-out, font-size .2s ease-in-out;
+  /*width: 145%;*/
+  /*transition: .3s width ease-out;*/
+}
+
+.form-group > .form-select:not(:placeholder-shown) + label {
+  opacity: .75;
+  transform: scale(.75) translateY(-0.5rem) translateX(0.15rem);
+  /*color: var(--color-text-btw);*/
+  transition: .3s ease-out;
+}
+
+.form-group > .form-select:focus + label, .form-group > .form-select:not(:placeholder-shown) + label, .form-group > .form-select + label {
+  opacity: .75;
+  transform: scale(.75) translateY(-0.5rem) translateX(0.15rem);
+  /*color: var(--color-text-btw);*/
+  transition: .3s ease-out;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-select, .form-control {
+  /*color: var(--color-text-btw);*/
+  font-size: 1.2rem;
+}
+
+.form-group > .form-select option {
+  color: #303030;
+  padding: 5px 10px !important;
+}
+
+.form-control:hover, .form-select:hover, .form-control:focus, .form-select:focus {
+  outline: 0;
+  border: none;
+  background: transparent;
+}
+
+.error-control {
+  margin: 2px 0;
+  color: red;
+  height: 10px !important;
+  width: 100%;
+  font-weight: normal;
+  /*padding-left: 20px;*/
+  font-size: 10px !important;
+  display: flex;
+  text-align: left;
+  align-items: center;
+}

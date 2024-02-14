@@ -1,0 +1,55 @@
+.pdfViewer, .canvasWrapper {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.canvasWrapper canvas {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.page {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+page-viewer {
+  height: 100%;
+  width: 100%;
+}
+
+.ng2-pdf-viewer-container {
+  /*width: auto !important;*/
+  /*height: 800px !important;*/
+  overflow: hidden !important;
+  /*max-height: 800px !important;*/
+}
+
+pdf-viewer {
+  /*width: 620px !important;*/
+  /*height: 800px !important;*/
+  /*margin: 0!important;*/
+  /*background: blue;*/
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.controls-nav {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  border: 1px solid var(--color-border-input);
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  column-gap: 10px;
+  background: var(--color-bg-second);
+}
+
+

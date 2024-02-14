@@ -1,0 +1,17 @@
+<div class="col-lg-12">
+  <div class="ibox">
+    <div class="ibox-content">
+      <app-table
+        [searchActions]="false"
+        [principalActions]="principalActions"
+        [quicklyActions]="quicklyActions"
+        [nameTable]="title"
+        [defaultTableData]="dataTable"
+        [configTable]="tableConfig"
+        [pagination]="pagination"
+        [tableFieldActions]="tableFieldActions"
+        (eventField)="listenEventFields($event)"
+      ></app-table>
+    </div>
+  </div>
+</div>

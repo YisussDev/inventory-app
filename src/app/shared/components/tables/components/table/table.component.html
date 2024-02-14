@@ -1,0 +1,181 @@
+<div class="table-container">
+  <div class="options-table">
+    <div class="search-tools">
+      <div *ngIf="searchActions" class="input-table-options" [formGroup]="formSearchQueries">
+        <div class="input-addon">
+          <span><i class="fa-solid fa-search"></i></span>
+        </div>
+        <input type="text" placeholder="Búsqueda..." class="table-option-control" formControlName="search">
+      </div>
+    </div>
+    <div class="event-tools">
+      <ng-container *ngIf="principalActions.length > 0">
+        <app-button-primary
+          [label]="principalActions[0].label"
+          [icon]="principalActions[0].icon"
+          (clickEvent)="eventRow('', principalActions[0].nameEvent)"
+        >
+        </app-button-primary>
+        <ng-container *ngFor="let action of principalActions.slice(1)">
+          <button (click)="eventRow('', action.nameEvent)"><span><i [class]="'fa fa-solid fa-'+action.icon"></i></span>
+          </button>
+        </ng-container>
+      </ng-container>
+      <div *ngIf="false" class="btn-group btn-option">
+        <button data-toggle="dropdown" class="btn btn-default btn-option dropdown-toggle">Columnas</button>
+        <ul class="dropdown-menu">
+          <div *ngFor="let column of tableConfig; let i = index" (dragover)="targetZone($event)" [id]="i"
+               (drop)="dropZone($event)">
+            <li style="display: flex" draggable="true" (dragstart)="dragInitial($event)" [attr.position]="i">
+              <a class="dropdown-item item-list" (click)="changeColumnVisible(column)" [attr.position]="i">
+                <input type="checkbox" [checked]="column.isActive">{{ column.column_translate }}
+              </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <ng-container *ngFor="let item of tableConfig">
+        <th *ngIf="tableConfigColumns(item.column_name)">{{ item.column_translate }}</th>
+      </ng-container>
+      <th>Acciones Rápidas</th>
+      <th *ngIf="validActions">Acciones</th>
+    </tr>
+    <tr *ngIf="true">
+      <ng-container *ngFor="let item of tableConfig" [formGroup]="formSearchQueries">
+        <th *ngIf="tableConfigColumns(item.column_name)" style="vertical-align: middle; text-align: center">
+          <ng-container [ngSwitch]="item.column_type.type">
+            <div *ngSwitchCase="'text'" class="form-table-group m-0">
+              <input type="text" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name" [readOnly]="!item.active_search">
+            </div>
+            <div *ngSwitchCase="'number'" class="form-table-group m-0">
+              <input type="number" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name" [disabled]="!item.active_search">
+            </div>
+            <div *ngSwitchCase="'select'" class="form-table-group m-0">
+              <select class="form-table-select" [formControlName]="item.column_name" [disabled]="!item.active_search">
+                <option [value]="null">Seleccione Una Opción</option>
+                <ng-container *ngFor="let optionSelect of item.config_pipe">
+                  <option [value]="optionSelect.id">{{ optionSelect.label }}</option>
+                </ng-container>
+              </select>
+            </div>
+            <div *ngSwitchCase="'autocomplete'" class="form-table-group m-0">
+              <input type="text" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name" [disabled]="!item.active_search">
+            </div>
+            <div *ngSwitchCase="'fecha'" class="form-table-group m-0">
+              <input type="text" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name">
+            </div>
+            <div *ngSwitchCase="'fecha y hora'" class="form-table-group m-0">
+              <input type="text" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name">
+            </div>
+            <div *ngSwitchCase="'rango de fecha'" class="form-table-group m-0">
+              <input type="text" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name">
+            </div>
+            <div *ngSwitchCase="'tags'" class="form-table-group m-0">
+              <input type="text" [placeholder]="item.column_translate" class="form-table-control"
+                     [formControlName]="item.column_name">
+            </div>
+          </ng-container>
+        </th>
+      </ng-container>
+      <th></th>
+      <th style="vertical-align: middle;text-align: center">
+        <button (click)="formSearchQueries.reset()" type="button" class="btn btn-sm btn-primary">
+          <i class="fa fa-trash"></i>
+        </button>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngIf="defaultTableData">
+      <tr *ngFor="let data of defaultTableData">
+        <ng-container *ngFor="let field of tableConfig">
+          <ng-container *ngIf="tableConfigColumns(field.column_name)">
+            <ng-container [ngSwitch]="field.column_pipe">
+              <ng-container *ngSwitchCase="'normal'">
+                <td>{{ getDataColumn(field.column_name, data) }}</td>
+              </ng-container>
+              <ng-container *ngSwitchCase="'cash'">
+                <td>{{ getDataColumn(field.column_name, data) | currency }}</td>
+              </ng-container>
+              <ng-container *ngSwitchCase="'status'">
+                <ng-container *ngFor="let option of field.config_pipe">
+                  <td *ngIf="getDataColumn(field.column_name, data) == option.id">
+                    <div class="badge-status" [style]="'background-color:' + option.color">
+                      {{ option.label }}
+                    </div>
+                  </td>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'link'">
+                <td>
+                  <div class="link_button">
+                    <a [href]="getDataColumn(field.column_name, data)" target="_blank">
+                      <span><i class="fa fa-solid fa-link"></i></span>
+                    </a>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container *ngSwitchCase="'icon'">
+                <ng-container *ngFor="let option of field.config_pipe">
+                  <td *ngIf="getDataColumn(field.column_name, data) == option.id">
+                    <div class="link_button" [style]="'background-color:' + option.color" [title]="option.label">
+                      <span><i [class]="'fa fa-solid fa-'+option.icon"></i></span>
+                    </div>
+                  </td>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'custom'">
+                <ng-container *ngIf="field['config_custom']">
+                  <td>{{ field['config_custom'](getDataColumn(field.column_name, data)) }}</td>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <td class="quickly-container">
+          <ng-container *ngFor="let action of quicklyActions">
+            <button [title]="action.label" (click)="eventRow(data, action.nameEvent)"><span><i
+              [class]="'fa fa-solid fa-'+action.icon"></i></span></button>
+          </ng-container>
+        </td>
+        <td *ngIf="validActions">
+          <div class="btn-group">
+            <button data-toggle="dropdown"
+                    class="btn btn-primary btn-sm dropdown-toggle"><i class="fa-solid fa-bars"></i></button>
+            <ul class="dropdown-menu" style="left: -100%">
+              <ng-container *ngFor="let actionEventItem of configActionsEvent">
+                <li *ngIf="actionEventItem.condition ? actionEventItem.condition(data) : true">
+                  <a class="dropdown-item"
+                     (click)="eventRow(data, actionEventItem.nameEvent)">
+                    {{ actionEventItem.label }}
+                  </a>
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <ng-container *ngIf="defaultTableData">
+    <p *ngIf="defaultTableData.length === 0" style="text-align: center">
+      No se encontraron elementos
+    </p>
+  </ng-container>
+  <app-pagination
+    *ngIf="!isLoading"
+    [pagination]="pagination"
+  ></app-pagination>
+</div>

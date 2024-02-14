@@ -1,0 +1,12 @@
+<div class="content-modal">
+  <ng-container *ngFor="let option of data">
+    <app-view-option [data]="option" (clickEvent)="select(option)" [configView]="configLabels"></app-view-option>
+  </ng-container>
+</div>
+<div class="control-modal">
+  <app-button-secondary
+    label="Cancelar"
+    (clickEvent)="closeModal()"
+  >
+  </app-button-secondary>
+</div>

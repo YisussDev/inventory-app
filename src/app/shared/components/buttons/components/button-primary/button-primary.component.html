@@ -1,0 +1,16 @@
+<ng-container>
+  <button (click)="eventClick(data)" class="button-primary" [disabled]="disabled">
+    <ng-container>
+      <ng-container *ngIf="(icon.length > 0) && !rigthIcon">
+        <span><i class="fa fa-{{icon}} fa-solid"></i> </span>
+      </ng-container>
+      <ng-container *ngIf="label">
+        {{label}}
+      </ng-container>
+      <ng-container *ngIf="(icon.length > 0) && rigthIcon">
+        <span><i class="fa fa-{{icon}} fa-solid"></i> </span>
+      </ng-container>
+    </ng-container>
+  </button>
+</ng-container>
+

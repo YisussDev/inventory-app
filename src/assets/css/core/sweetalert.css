@@ -1,0 +1,23 @@
+div:where(.swal2-container) {
+  overflow-y: auto !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  z-index: 99999999 !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+  background: var(--color-primary) !important;
+}
+
+.swal2-icon {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.swal2-height-auto {
+  height: 100% !important;
+}
+
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+  overflow-y: auto !important;
+}

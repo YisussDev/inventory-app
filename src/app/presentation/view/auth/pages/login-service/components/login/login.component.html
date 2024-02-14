@@ -1,0 +1,33 @@
+<div class="auth-container" id="auth-container">
+  <div class="login-container">
+    <div class="logo-container">
+      <ng-container>
+        <img src="assets/img/logos/logo-normal.svg" alt="logo">
+      </ng-container>
+    </div>
+    <form class="form-container" [formGroup]="formLogin">
+      <p style="font-size: 1rem; margin-bottom: 10px">Iniciar Sesión</p>
+      <app-input-text
+        icon="envelope"
+        label="Correo"
+        formControlName="email"
+        [control]="formLogin.controls['email']"
+      ></app-input-text>
+      <app-input-password
+        icon="lock"
+        label="Contraseña"
+        formControlName="password"
+        [control]="formLogin.controls['password']"
+      >
+      </app-input-password>
+      <div style="display: grid; width: 100%; row-gap: 15px">
+        <app-button-primary
+          label="Ingresar"
+          (clickEvent)="login()"
+          [disabled]="!formLogin.valid"
+        >
+        </app-button-primary>
+      </div>
+    </form>
+  </div>
+</div>

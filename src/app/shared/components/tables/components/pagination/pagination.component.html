@@ -1,0 +1,31 @@
+<ng-container *ngIf="pagination">
+  <ul class="pagination">
+    <li class="paginate_button page-item previous" *ngIf="pagination.prev" (click)="changePage(pagination.prev)">
+      <a class="page-link">Anterior</a>
+    </li>
+    <ng-container *ngFor="let item of pagination.links">
+      <ng-container *ngIf="(item.label != '...')&&(item.label != pagination.current_page+'')">
+        <li *ngIf="item.label.length < 5"
+            [class]="((pagination.current_page+'') == item.label) ? ('paginate_button page-item active') : ('paginate_button page-item') "
+            (click)="changePage(item.url)">
+          <a class="page-link">{{ item.label }}</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="(item.label == '...')||(item.label == pagination.current_page+'')">
+        <li *ngIf="item.label.length < 5"
+            disabled
+            [class]="((pagination.current_page+'') == item.label) ? ('paginate_button page-item active') : ('paginate_button page-item') ">
+          <a class="page-link">{{ item.label }}</a>
+        </li>
+      </ng-container>
+
+    </ng-container>
+    <!--    <li class="paginate_button page-item previous disabled">-->
+    <!--      <a class="page-link">Previous</a>-->
+    <!--    </li>-->
+
+    <li class="paginate_button page-item next" (click)="changePage(pagination.next)" *ngIf="pagination.next">
+      <a class="page-link">Siguiente</a>
+    </li>
+  </ul>
+</ng-container>

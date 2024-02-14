@@ -1,0 +1,74 @@
+<div class="content-modal" [formGroup]="formGeneral">
+  <!--  <ng-template [ngTemplateOutlet]="fieldsToConfig"></ng-template>-->
+  <ng-container *ngFor="let fieldForm of configForm">
+    <ng-container *ngIf="fieldForm.typeField == 'TEXT'">
+      <app-input-text
+        [label]="fieldForm.label"
+        [formControlName]="fieldForm.formControlName"
+        [delayActive]="fieldForm.delayActive"
+        [delayTime]="fieldForm.delayTime"
+        [control]="formGeneral.get(fieldForm.formControlName)"
+        [icon]="fieldForm.icon"
+      >
+      </app-input-text>
+    </ng-container>
+    <ng-container *ngIf="fieldForm.typeField == 'SELECT'">
+      <app-input-select
+        [label]="fieldForm.label"
+        [formControlName]="fieldForm.formControlName"
+        [delayActive]="fieldForm.delayActive"
+        [delayTime]="fieldForm.delayTime"
+        [control]="formGeneral.get(fieldForm.formControlName)"
+        [placeholder]="fieldForm.placeholder"
+        [optionsSelect]="fieldForm.data"
+        [icon]="fieldForm.icon"
+      >
+      </app-input-select>
+    </ng-container>
+    <ng-container *ngIf="fieldForm.typeField == 'AUTOCOMPLETE'">
+      <app-input-autocomplete
+        [label]="fieldForm.label"
+        [formControlName]="fieldForm.formControlName"
+        [delayActive]="fieldForm.delayActive"
+        [delayTime]="fieldForm.delayTime"
+        [control]="formGeneral.get(fieldForm.formControlName)"
+        [dataAutoComplete]="fieldForm.data"
+        [icon]="fieldForm.icon"
+      >
+      </app-input-autocomplete>
+    </ng-container>
+    <ng-container *ngIf="fieldForm.typeField == 'NUMBER'">
+      <app-input-number
+        [label]="fieldForm.label"
+        [formControlName]="fieldForm.formControlName"
+        [delayActive]="fieldForm.delayActive"
+        [delayTime]="fieldForm.delayTime"
+        [control]="formGeneral.get(fieldForm.formControlName)"
+        [icon]="fieldForm.icon"
+      >
+      </app-input-number>
+    </ng-container>
+    <ng-container *ngIf="fieldForm.typeField == 'MULTIPLE'">
+      <app-input-multiple-options
+        [label]="fieldForm.label"
+        [formControlName]="fieldForm.formControlName"
+        [control]="formGeneral.get(fieldForm.formControlName)"
+        [optionsData]="fieldForm.data"
+      >
+      </app-input-multiple-options>
+    </ng-container>
+  </ng-container>
+</div>
+<div class="control-modal">
+  <app-button-primary
+    label="Listo"
+    (clickEvent)="terminateForm()"
+  >
+  </app-button-primary>
+  <app-button-primary
+    label="Cerrar"
+    (clickEvent)="closeModal()"
+  >
+  </app-button-primary>
+</div>
+

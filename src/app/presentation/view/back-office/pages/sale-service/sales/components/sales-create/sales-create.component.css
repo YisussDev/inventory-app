@@ -1,0 +1,123 @@
+.logo-container {
+  height: 100px;
+  width: 100px;
+}
+
+.logo-container > img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.customer-logo-container {
+  display: grid;
+}
+
+.add-products_container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  background-color: var(--color-bg-second);
+  border: 1px solid var(--color-border-input);
+  box-shadow: var(--shadow-box-general);
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.add-products_container > form {
+  margin: 0;
+}
+
+.btn-add {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.btn-delete {
+  background-color: #ff4a4a;
+  border-radius: 50px;
+  height: 20px;
+  width: 20px;
+  border: none;
+  color: white;
+}
+
+.ibox-content input, select {
+  background-color: var(--color-bg-second);
+  border: 1px solid var(--color-bg-second);
+  margin: 0;
+}
+
+.button-remove {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  background: red;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.totals-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  margin-left: auto;
+}
+
+.totals-container div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.totals-container strong {
+  display: block;
+}
+
+.totals-container span {
+  margin-left: 10px;
+}
+
+.form-items {
+  display: grid;
+  gap: 10px
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 4000px) {
+  .form-items {
+    grid-template-columns: 1.4fr 0.8fr 1fr 1fr;
+  }
+
+  .customer-logo-container {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+
+  .form-customer {
+    margin-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .form-customer {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+  .form-items {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,10 @@
+<button [style]="fullWidth ? 'width:100%':''" (click)="eventClick()"
+        [ngClass]="disabled ? 'button button-disabled':'button button-primary'">
+  <ng-container>
+    <ng-container *ngIf="icon">
+      <span> <i class="fa fa-{{icon}} fa-solid"></i> </span>
+    </ng-container>
+    {{label}}
+  </ng-container>
+</button>
+

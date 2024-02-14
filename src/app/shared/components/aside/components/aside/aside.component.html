@@ -1,0 +1,16 @@
+<div class="aside-container" *ngIf="visible">
+  <div [class]="closing ? ('aside-background-closing'):('aside-background')" (click)="closeAside()">
+
+  </div>
+  <div [class]="closing ? ('aside-closing'):('aside')">
+    <button class="button-close-aside" (click)="closeAside()">
+      <span>
+        <i class="fa fa-solid fa-arrow-right"></i>
+      </span>
+    </button>
+    <p class="title-aside">{{title}}</p>
+    <div class="body-aside">
+      <ng-container #asideContainer></ng-container>
+    </div>
+  </div>
+</div>

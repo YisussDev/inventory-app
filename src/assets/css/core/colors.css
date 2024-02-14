@@ -1,0 +1,41 @@
+:root {
+  --color-primary: #E86F00;
+  --color-secondary: #863f00;
+  --color-border-primary: #8d4400;
+  --color-primary-hover: #502f97;
+  --color-primary-active: #321a62;
+  --color-gradient: linear-gradient(var(--color-primary), #7b4dee);
+  --color-primary-disabled: #E9E9E9;
+  --color-bg: #f6f6f6;
+  --color-bg-second: #FFFFFF;
+  --color-border: #dadada;
+  --color-border-input: #dcdcdc;
+  --color-inputs-bg: #FFFFFF;
+  --color-text-btw: #5e5e5e;
+  --color-text-button-disabled: #d3d3d3;
+  --color-bg-form: #E9E9E9;
+  --color-active-form: #bdbdbd;
+  --shadow-box-uniform: 0 0 3px 2px rgba(0, 0, 0, 0.10);
+  --shadow-box-general: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  --shadow-box-general-hover: 0 4px 6px rgba(0, 0, 0, .4), 0 10px 18px rgba(0, 0, 0, .2);
+  --shadow-prime: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --border-radius-general: 5px;
+  --color-navbar: linear-gradient(180deg, #45b05a 0%, #68fb84 100%);
+  --color-bg-button-basic: #FFF;
+  --color-text-button-basic: #515151;
+  --color-bg-button-basic-disabled: #d3d3d3;
+  transition: .3s ease-out color, background-color !important;
+}
+
+.dark-theme {
+  --color-bg: #2e2e2e;
+  --color-bg-second: #2a2a2a;
+  --color-border: #212121;
+  --color-border-input: #212121;
+  --color-text-btw: #d5d5d5;
+  --color-text-button-disabled: #232323;
+  --color-bg-button-basic: #373737;
+  --color-text-button-basic: #ffffff;
+  --color-bg-button-basic-disabled: #000000;
+  transition: .3s ease-out color, background-color !important;
+}

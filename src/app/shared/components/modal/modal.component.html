@@ -1,0 +1,15 @@
+<ng-container *ngIf="isOpen">
+  <div class="container-modal">
+    <div class="modal-box">
+      <div class="header-modal">
+        <p class="title-modal">{{title}}</p>
+        <button class="close-modal" (click)="closeModal()">
+          <span><i class="fa fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="body-modal">
+        <ng-container #modalContainer></ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>

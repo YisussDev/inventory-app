@@ -1,0 +1,23 @@
+.link_button{
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  margin: 0 auto;
+  background: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link_button > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration-color: inherit;
+  color: #FFF;
+}
+
+.link_button > a {
+  color: #FFF;
+  text-decoration: none;
+}

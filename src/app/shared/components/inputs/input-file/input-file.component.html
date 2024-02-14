@@ -1,0 +1,22 @@
+<div>
+  <div [ngClass]="value ? 'input-area input-area-active':'input-area'" [style]="hasError() ? ('border-color: red'):('')">
+    <div>
+      <div>
+        <p>{{label}}</p>
+        <p>Documentos admitidos: PDF, PNG, JPG</p>
+      </div>
+      <p><span><i class="fa fa-solid fa-upload"></i></span></p>
+    </div>
+    <input (click)="resetDocument($event)"
+           (change)="loadFiles($event)"
+           type="file"
+           accept=".pdf, .jpg, .png"
+           class="input-file">
+  </div>
+  <div class="error-control">
+    <ng-container *ngIf="hasError()">
+      {{getErrorMessage()}}
+    </ng-container>
+  </div>
+</div>
+

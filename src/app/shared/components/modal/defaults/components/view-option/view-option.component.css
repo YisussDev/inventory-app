@@ -1,0 +1,58 @@
+.option-list {
+  width: 100%;
+  border-radius: 10px;
+  height: 50px;
+  background: var(--color-bg-second);
+  color: var(--color-text-btw);
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  transition: .3s all ease-out;
+  border: 1px solid transparent;
+}
+
+.option-list:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-box-uniform);
+  cursor: pointer;
+  transition: .3s all ease-out;
+  border-color: var(--color-border-input);
+}
+
+.option-list:active {
+  transform: translateY(1px);
+  cursor: pointer;
+  transition: .3s ease-out;
+}
+
+.option-logo {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-info {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+
+.option-info > p:first-child {
+  font-weight: 600;
+}
+
+.option-active {
+  background: var(--color-primary);
+  color: #FFF;
+}
+
+.option-active:hover {
+  background: var(--color-primary);
+  color: #FFF;
+  transition: .3s ease-out;
+}
+

@@ -1,0 +1,21 @@
+<ng-container *ngIf="!loading">
+  <button (click)="eventClick(data)" [ngClass]="disabled ? 'button-primary-disabled':'button-primary'" >
+    <ng-container>
+      <ng-container *ngIf="(icon.length > 0)">
+        <span> <i class="fa fa-{{icon}} fa-solid"></i> </span>
+      </ng-container>
+      {{label}}
+    </ng-container>
+  </button>
+</ng-container>
+<ng-container *ngIf="loading">
+  <button class="button-primary-disabled" style="color: transparent">
+    <ng-container>
+      <ng-container *ngIf="(icon.length > 0)">
+        <span> <i class="fa fa-{{icon}} fa-solid"></i> </span>
+      </ng-container>
+      {{label}}
+    </ng-container>
+  </button>
+</ng-container>
+

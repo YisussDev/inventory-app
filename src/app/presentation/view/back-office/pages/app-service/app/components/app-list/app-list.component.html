@@ -1,0 +1,63 @@
+<section class="home-container">
+  <div class="session-info">
+    <div class="card-session">
+      <div class="info-logo">
+        <img [src]="userData.img_url" alt="img_user">
+      </div>
+      <div class="info-user">
+        <p>{{ userData.name }}</p>
+        <p>{{ userData.email }}</p>
+      </div>
+    </div>
+    <button class="button-logout" (click)="logout()">
+      <span><i class="fa fa-solid fa-right-from-bracket"></i></span>
+    </button>
+  </div>
+  <div class="modules-info">
+    <div>
+      <ng-container *ngIf="validateModule('users')">
+        <div class="button-squart-app">
+          <button (click)="goToModule('users')" style="background-color: #006e8e;">
+            <span><i class="fa fa-solid fa-users"></i></span>
+          </button>
+          <p>Usuarios</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="validateModule('products')">
+        <div class="button-squart-app">
+          <button (click)="goToModule('products')" style="background-color: #d55b00;">
+            <span><i class="fa fa-solid fa-bag-shopping"></i></span>
+          </button>
+          <p>Productos</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="validateModule('providers')">
+        <div class="button-squart-app">
+          <button (click)="goToModule('providers')" style="background-color: #009d99;">
+            <span><i class="fa fa-solid fa-truck-fast"></i></span>
+          </button>
+          <p>Proveedores</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="validateModule('sales')">
+        <div class="button-squart-app">
+          <button (click)="goToModule('sales')" style="background-color: #136400;">
+            <span><i class="fa fa-solid fa-cart-shopping"></i></span>
+          </button>
+          <p>Ventas</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="validateModule('audits')">
+        <div class="button-squart-app">
+          <button (click)="goToModule('audits')" style="background-color: #7d5500;">
+            <span><i class="fa fa-solid fa-gavel"></i></span>
+          </button>
+          <p>Auditoría</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="bussiness-info">
+    <img src="assets/img/logos/logo-normal.svg">
+  </div>
+</section>
